@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1037378024757",
+    "project_id": "c-commerce-clean-architecture",
+    "storage_bucket": "c-commerce-clean-architecture.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037378024757:android:9419b5b3238d5b5b75487c",
+        "android_client_info": {
+          "package_name": "com.example.e_commerce_clean_arcitecture"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvpkmYIcBQZtbul99S3-BMq1xcaEg1uFc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
