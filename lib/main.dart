@@ -1,11 +1,10 @@
 import 'package:e_commerce_clean_arcitecture/homeBody.dart';
-import 'package:e_commerce_clean_arcitecture/presentation/view/ItemDetiles/ItemDetilesView.dart';
-import 'package:e_commerce_clean_arcitecture/presentation/view/homeView/homeVeiw.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
 
+import 'Feature/home/presention/view/ItemDetiles/ItemDetilesView.dart';
 import 'core/utiles/theme.dart';
 import 'firebase_options.dart';
 

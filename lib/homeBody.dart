@@ -1,13 +1,14 @@
 import 'dart:ffi';
 
-import 'package:e_commerce_clean_arcitecture/presentation/view/authentication/authenticationView.dart';
-import 'package:e_commerce_clean_arcitecture/presentation/view/card/cardView.dart';
-import 'package:e_commerce_clean_arcitecture/presentation/view/category/categoryView.dart';
-import 'package:e_commerce_clean_arcitecture/presentation/view/homeView/homeVeiw.dart';
-import 'package:e_commerce_clean_arcitecture/presentation/view/homeView/homeWidget/BottomNavigationBar/bottomNavigationBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+
+import 'Feature/authantication/presention/view/authentication/authenticationView.dart';
+import 'Feature/home/presention/view/card/cardView.dart';
+import 'Feature/home/presention/view/category/categoryView.dart';
+import 'Feature/home/presention/view/homeView/homeVeiw.dart';
+import 'Feature/home/presention/view/homeView/homeWidget/BottomNavigationBar/bottomNavigationBar.dart';
 
 class Homebody extends StatefulWidget {
    Homebody({super.key});
