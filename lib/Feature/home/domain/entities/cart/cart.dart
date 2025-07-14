@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 
-import '../product/product.dart';
+import '../product/productEntites.dart';
 
 class ProductItem extends Equatable {
   final String id;
-  final Product product;
+  final ProductEntites product;
   final PriceTag priceTag;
 
   const ProductItem({

@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 import '../catigory/catigory.dart';
 
-class Product  extends Equatable{
+class ProductEntites  extends Equatable{
   final String id;
   final String name;
   final String description;
@@ -12,7 +12,7 @@ class Product  extends Equatable{
   final DateTime createdAt;
   final DateTime updatedAt;
 
-  Product({
+  ProductEntites({
     required this.id,
     required this.name,
     required this.description,

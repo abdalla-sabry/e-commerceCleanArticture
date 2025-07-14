@@ -8,9 +8,10 @@ import '../../../../../core/utiles/constant/colorConstante.dart';
 
 
 class Carditemscustom extends StatelessWidget {
-  Carditemscustom({super.key, required this.hight, required this.width});
+  Carditemscustom({super.key, required this.hight, required this.width, required this.imageUrl});
 final double hight;
 final double width;
+final String imageUrl;
   @override
   Widget build(BuildContext context) {
     return         SizedBox(
@@ -41,7 +42,7 @@ final double width;
               ),
             ),
             imageUrl:
-            'https://res.cloudinary.com/programming-night/image/upload/v1734179544/E-Shop/Porducts/Razer%20Viper%20V3%20Pro/img-1_i1uvec.jpg',
+imageUrl            ,
             fit: BoxFit.contain,
           ),
         ),

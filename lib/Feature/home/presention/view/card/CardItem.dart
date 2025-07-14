@@ -13,7 +13,7 @@ class Carditem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Carditemscustom(hight: 20.h, width: 27.w),
+        // Carditemscustom(hight: 20.h, width: 27.w),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,

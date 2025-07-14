@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 import '../DeliverInfo/deliveryInfo.dart';
-import '../product/product.dart';
+import '../product/productEntites.dart';
 
 class OrderDetiles extends Equatable {
   final String id;
@@ -20,7 +20,7 @@ class OrderDetiles extends Equatable {
   List<Object?> get props => [id, orderItems, deliveryInfo, discount];
 }class OrderItem extends Equatable {
   final String id;
-  final Product product;
+  final ProductEntites product;
   final PriceTag priceTag;
   final double price;
   final int quantity;

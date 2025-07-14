@@ -46,9 +46,12 @@ class _ItemdetilesviewState extends State<Itemdetilesview> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Itemdetilesimagewithsmothdot()],
+      body: Hero(
+        tag: 'productItem',
+        child: Column(
+          children: [
+            Itemdetilesimagewithsmothdot()],
+        ),
       ),
       bottomNavigationBar: Itemdetilesbottomnavigationbar(),
     );
