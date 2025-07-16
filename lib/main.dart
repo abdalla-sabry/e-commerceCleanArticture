@@ -1,5 +1,6 @@
 import 'package:e_commerce_clean_arcitecture/Feature/home/domain/use%20cases/prodect/FeatchListprodectUseCases.dart';
 import 'package:e_commerce_clean_arcitecture/Feature/home/presention/mangement/product/ListProducts/product_list_cubit.dart';
+import 'package:e_commerce_clean_arcitecture/core/utiles/observer.dart';
 import 'package:e_commerce_clean_arcitecture/homeBody.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,6 +16,7 @@ import 'firebase_options.dart';
 void main() async {
   getITFuncationForproductConstractor();
   WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer=Obseriver();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 
   await Firebase.initializeApp(
@@ -42,7 +44,6 @@ class MyApp extends StatelessWidget {
               home: Homebody(),
               theme: AppTheme.lightTheme,
               routes: {
-                Itemdetilesview.routeName: (context) => Itemdetilesview()
               },
             ),
           );

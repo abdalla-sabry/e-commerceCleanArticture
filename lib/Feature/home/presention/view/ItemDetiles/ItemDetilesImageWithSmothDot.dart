@@ -1,12 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:e_commerce_clean_arcitecture/core/utiles/fontStyle.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:e_commerce_clean_arcitecture/Feature/home/domain/entities/product/productEntites.dart';
+import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Itemdetilesimagewithsmothdot extends StatefulWidget {
-  const Itemdetilesimagewithsmothdot({super.key});
+  const Itemdetilesimagewithsmothdot({super.key, required this.productEntites});
+
+  final ProductEntites productEntites;
 
   @override
   State<Itemdetilesimagewithsmothdot> createState() =>
@@ -17,57 +19,63 @@ class _ItemdetilesimagewithsmothdotState
     extends State<Itemdetilesimagewithsmothdot> {
   int currentIndex = 0;
 
-  // ✅ Now using just URLs for cleaner mapping
-  final List<String> imageUrls = [
-    "https://res.cloudinary.com/programming-night/image/upload/v1734179544/E-Shop/Porducts/Razer%20Viper%20V3%20Pro/img-1_i1uvec.jpg",
-    "https://res.cloudinary.com/programming-night/image/upload/v1734179552/E-Shop/Porducts/Razer%20Viper%20V3%20Pro/img-2_gpinqg.jpg",
-    "https://res.cloudinary.com/programming-night/image/upload/v1734179562/E-Shop/Porducts/Razer%20Viper%20V3%20Pro/img-3_wk8b6m.jpg",
-    "https://res.cloudinary.com/programming-night/image/upload/v1734179562/E-Shop/Porducts/Razer%20Viper%20V3%20Pro/img-4_av2vuk.jpg",
-    "https://res.cloudinary.com/programming-night/image/upload/v1734179562/E-Shop/Porducts/Razer%20Viper%20V3%20Pro/img-5_nev0tq.jpg",
-    "https://res.cloudinary.com/programming-night/image/upload/v1734179562/E-Shop/Porducts/Razer%20Viper%20V3%20Pro/img-6_zdovsx.jpg",
-    "https://res.cloudinary.com/programming-night/image/upload/v1734179561/E-Shop/Porducts/Razer%20Viper%20V3%20Pro/img-7_cqf6wz.jpg",
-    "https://res.cloudinary.com/programming-night/image/upload/v1734184598/E-Shop/Porducts/Bose%20QuietComfort/i3z7agm7voqvvxdtiolw.jpg",
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final product = widget.productEntites;
+
     return Column(
       children: [
-      SizedBox(
-      width: double.infinity,
-      height: MediaQuery.of(context).size.width, // Makes it square
-      child: CarouselSlider(
-        items: imageUrls.map((url) {
-          return SizedBox.expand( // ✅ fills full space
-            child: CachedNetworkImage(
-              imageUrl: url,
-              fit: BoxFit.cover, // ✅ covers without white space
-            ),
-          );
-        }).toList(),
-        options: CarouselOptions(
-          viewportFraction: 1,
-          enlargeCenterPage: false, // ✅ prevent zoom effect
-          autoPlay: true,
-          reverse: true,
-          enableInfiniteScroll: false,
-          autoPlayInterval: Duration(seconds: 3),
-          autoPlayAnimationDuration: Duration(milliseconds: 800),
-          autoPlayCurve: Curves.fastOutSlowIn,
-          onPageChanged: (index, reason) {
-            setState(() {
-              currentIndex = index;
-            });
-          },
-        ),
-      ),
-    ),
+        // ✅ Force a square aspect ratio
+        AspectRatio(
+          aspectRatio: 1, // Square
+          child: CarouselSlider.builder(
+            itemCount: product.images.length,
+            itemBuilder: (context, index, realIdx) {
+              final image = product.images[index];
 
-        SizedBox(height: 4.h),
+              return Hero(
+                tag: 'product-${product.id}',
+                child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  decoration: BoxDecoration(
+                  color: Colors.white, // match theme
+                  image: DecorationImage(
+                    image: CachedNetworkImageProvider(image),
+                    fit: BoxFit.contain,
+                    alignment: Alignment.center,
+                  ),
+                ),
+
+              ),
+              );
+            },
+            options: CarouselOptions(
+              viewportFraction: 1,
+              enlargeCenterPage: false,
+              enableInfiniteScroll: false,
+              height: double.infinity, // Will be controlled by AspectRatio
+              onPageChanged: (index, reason) {
+                setState(() {
+                  currentIndex = index;
+                });
+              },
+            ),
+          ),
+        ),
+
+        SizedBox(height: 2.h),
+
+        // ✅ Dot indicator
         AnimatedSmoothIndicator(
           activeIndex: currentIndex,
-          count: imageUrls.length,
-          effect: ExpandingDotsEffect(),
+          count: product.images.length,
+          effect: ExpandingDotsEffect(
+            dotHeight: 8,
+            dotWidth: 8,
+            activeDotColor: Colors.black,
+            dotColor: Colors.grey.shade300,
+          ),
           onDotClicked: (index) {
             setState(() {
               currentIndex = index;

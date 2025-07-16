@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:e_commerce_clean_arcitecture/Feature/home/domain/entities/product/productEntites.dart';
 import 'package:e_commerce_clean_arcitecture/core/utiles/fontStyle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,11 +11,12 @@ import 'ItemDetilesImageWithSmothDot.dart';
 import 'ItemDtilesBottomNavigationBar/itemDetilesBottomNavigationBar.dart';
 
 class Itemdetilesview extends StatefulWidget {
-  Itemdetilesview({super.key});
+  Itemdetilesview({super.key, required this.product});
   static const String routeName = 'itemDetiles';
+  final ProductEntites product;
 
   @override
-  State<Itemdetilesview> createState() => _ItemdetilesviewState();
+  State<Itemdetilesview> createState() => _ItemdetilesviewState( );
 }
 
 class _ItemdetilesviewState extends State<Itemdetilesview> {
@@ -27,7 +29,10 @@ class _ItemdetilesviewState extends State<Itemdetilesview> {
         elevation: 0,
         leading: Padding(
           padding: EdgeInsets.only(left: 2.w),
-          child: const Icon(Icons.arrow_back, color: Colors.black),
+          child: GestureDetector(onTap: (){
+            return Navigator.pop(context);
+          },
+              child: const Icon(Icons.arrow_back, color: Colors.black)),
         ),
         actions: [
           IconButton(
@@ -46,12 +51,9 @@ class _ItemdetilesviewState extends State<Itemdetilesview> {
           ),
         ],
       ),
-      body: Hero(
-        tag: 'productItem',
-        child: Column(
-          children: [
-            Itemdetilesimagewithsmothdot()],
-        ),
+      body: Column(
+        children: [
+          Itemdetilesimagewithsmothdot(productEntites: widget.product,)],
       ),
       bottomNavigationBar: Itemdetilesbottomnavigationbar(),
     );
