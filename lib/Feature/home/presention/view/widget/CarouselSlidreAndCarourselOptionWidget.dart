@@ -5,18 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class Itemdetilesimagewithsmothdot extends StatefulWidget {
-  const Itemdetilesimagewithsmothdot({super.key, required this.productEntites});
+class Carouselslidreandcarourseloptionwidget extends StatefulWidget {
+  const Carouselslidreandcarourseloptionwidget({super.key, required this.productEntites});
 
   final ProductEntites productEntites;
 
   @override
-  State<Itemdetilesimagewithsmothdot> createState() =>
-      _ItemdetilesimagewithsmothdotState();
+  State<Carouselslidreandcarourseloptionwidget> createState() =>
+      _Carouselslidreandcarourseloptionwidget();
 }
 
-class _ItemdetilesimagewithsmothdotState
-    extends State<Itemdetilesimagewithsmothdot> {
+class _Carouselslidreandcarourseloptionwidget
+    extends State<Carouselslidreandcarourseloptionwidget> {
   int currentIndex = 0;
 
   @override
@@ -25,6 +25,7 @@ class _ItemdetilesimagewithsmothdotState
 
     return Column(
       children: [
+        // ✅ Force a square aspect ratio
         AspectRatio(
           aspectRatio: 1, // Square
           child: CarouselSlider.builder(
@@ -38,15 +39,15 @@ class _ItemdetilesimagewithsmothdotState
                   width: double.infinity,
                   height: double.infinity,
                   decoration: BoxDecoration(
-                  color: Colors.white, // match theme
-                  image: DecorationImage(
-                    image: CachedNetworkImageProvider(image),
-                    fit: BoxFit.contain,
-                    alignment: Alignment.center,
+                    color: Colors.white, // match theme
+                    image: DecorationImage(
+                      image: CachedNetworkImageProvider(image),
+                      fit: BoxFit.contain,
+                      alignment: Alignment.center,
+                    ),
                   ),
-                ),
 
-              ),
+                ),
               );
             },
             options: CarouselOptions(

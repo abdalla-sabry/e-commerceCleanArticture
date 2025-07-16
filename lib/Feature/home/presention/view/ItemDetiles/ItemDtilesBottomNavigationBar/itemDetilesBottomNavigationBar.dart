@@ -5,8 +5,8 @@ import '../../widget/InputFormButton.dart';
 
 
 class Itemdetilesbottomnavigationbar extends StatelessWidget {
-  const Itemdetilesbottomnavigationbar({super.key});
-
+   Itemdetilesbottomnavigationbar({super.key});
+num? total;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,7 +31,7 @@ class Itemdetilesbottomnavigationbar extends StatelessWidget {
                 style: TextStyle(color: Colors.white70, fontSize: 16),
               ),
               Text(
-                '\$150}',
+              total==null?  '\$150}':'\$${total}',
                 style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18,

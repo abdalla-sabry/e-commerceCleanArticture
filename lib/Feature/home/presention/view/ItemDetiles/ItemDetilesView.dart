@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import 'ItemDetilesDescraption.dart';
 import 'ItemDetilesImageWithSmothDot.dart';
 import 'ItemDtilesBottomNavigationBar/itemDetilesBottomNavigationBar.dart';
 
@@ -16,12 +17,11 @@ class Itemdetilesview extends StatefulWidget {
   final ProductEntites product;
 
   @override
-  State<Itemdetilesview> createState() => _ItemdetilesviewState( );
+  State<Itemdetilesview> createState() => _ItemdetilesviewState();
 }
 
 class _ItemdetilesviewState extends State<Itemdetilesview> {
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -29,9 +29,10 @@ class _ItemdetilesviewState extends State<Itemdetilesview> {
         elevation: 0,
         leading: Padding(
           padding: EdgeInsets.only(left: 2.w),
-          child: GestureDetector(onTap: (){
-            return Navigator.pop(context);
-          },
+          child: GestureDetector(
+              onTap: () {
+                return Navigator.pop(context);
+              },
               child: const Icon(Icons.arrow_back, color: Colors.black)),
         ),
         actions: [
@@ -45,15 +46,26 @@ class _ItemdetilesviewState extends State<Itemdetilesview> {
             padding: EdgeInsets.only(right: 2.w),
             child: IconButton(
               icon: Icon(Icons.share, color: Colors.black),
-              onPressed: () {
-              },
+              onPressed: () {},
             ),
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Itemdetilesimagewithsmothdot(productEntites: widget.product,)],
+      body: SingleChildScrollView(
+        child: Column(
+            children: [
+              SizedBox(
+                height: 500,
+                width: double.infinity,
+                child: Itemdetilesimagewithsmothdot(
+                  productEntites: widget.product,
+                ),
+              ),
+              Itemdetilesdescraption(
+                product: widget.product,
+              )
+            ],
+           ),
       ),
       bottomNavigationBar: Itemdetilesbottomnavigationbar(),
     );
