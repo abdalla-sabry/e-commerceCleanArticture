@@ -5,4 +5,7 @@ part 'total_check_state.dart';
 
 class TotalCheckCubit extends Cubit<TotalCheckState> {
   TotalCheckCubit() : super(TotalCheckInitial());
+  addPrice(num price){
+emit(TotalCheckAdding(price));
+  }
 }

@@ -1,6 +1,11 @@
 part of 'total_check_cubit.dart';
 
 @immutable
-sealed class TotalCheckState {}
+abstract class TotalCheckState {}
 
-final class TotalCheckInitial extends TotalCheckState {}
+ class TotalCheckInitial extends TotalCheckState {}
+ class TotalCheckAdding extends TotalCheckState {
+ num addPrise;
+ TotalCheckAdding(this.addPrise);
+ }
+

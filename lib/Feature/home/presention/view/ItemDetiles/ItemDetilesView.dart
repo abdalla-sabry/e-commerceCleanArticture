@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_commerce_clean_arcitecture/Feature/home/domain/entities/product/productEntites.dart';
+import 'package:e_commerce_clean_arcitecture/Feature/home/presention/mangement/product/TotolCheak/total_check_cubit.dart';
 import 'package:e_commerce_clean_arcitecture/core/utiles/fontStyle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -13,6 +15,7 @@ import 'ItemDtilesBottomNavigationBar/itemDetilesBottomNavigationBar.dart';
 
 class Itemdetilesview extends StatefulWidget {
   Itemdetilesview({super.key, required this.product});
+
   static const String routeName = 'itemDetiles';
   final ProductEntites product;
 
@@ -23,36 +26,38 @@ class Itemdetilesview extends StatefulWidget {
 class _ItemdetilesviewState extends State<Itemdetilesview> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: Padding(
-          padding: EdgeInsets.only(left: 2.w),
-          child: GestureDetector(
-              onTap: () {
-                return Navigator.pop(context);
+    return BlocProvider(
+      create: (context) => TotalCheckCubit(),
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: Padding(
+            padding: EdgeInsets.only(left: 2.w),
+            child: GestureDetector(
+                onTap: () {
+                  return Navigator.pop(context);
+                },
+                child: const Icon(Icons.arrow_back, color: Colors.black)),
+          ),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.message, color: Colors.black),
+              onPressed: () {
+                // handle message action
               },
-              child: const Icon(Icons.arrow_back, color: Colors.black)),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.message, color: Colors.black),
-            onPressed: () {
-              // handle message action
-            },
-          ),
-          Padding(
-            padding: EdgeInsets.only(right: 2.w),
-            child: IconButton(
-              icon: Icon(Icons.share, color: Colors.black),
-              onPressed: () {},
             ),
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
+            Padding(
+              padding: EdgeInsets.only(right: 2.w),
+              child: IconButton(
+                icon: Icon(Icons.share, color: Colors.black),
+                onPressed: () {},
+              ),
+            ),
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Column(
             children: [
               SizedBox(
                 height: 500,
@@ -65,9 +70,10 @@ class _ItemdetilesviewState extends State<Itemdetilesview> {
                 product: widget.product,
               )
             ],
-           ),
+          ),
+        ),
+        bottomNavigationBar: Itemdetilesbottomnavigationbar(),
       ),
-      bottomNavigationBar: Itemdetilesbottomnavigationbar(),
     );
   }
 }

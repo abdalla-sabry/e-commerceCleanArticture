@@ -64,7 +64,7 @@ class PriceTagModel extends PriceTag {
   };
 }
 
-class CategoryModel extends Category {
+class CategoryModel extends CategoryEntites {
    CategoryModel({
     required super.id,
     required super.name,

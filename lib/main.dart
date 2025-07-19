@@ -1,4 +1,5 @@
 import 'package:e_commerce_clean_arcitecture/Feature/home/domain/use%20cases/prodect/FeatchListprodectUseCases.dart';
+import 'package:e_commerce_clean_arcitecture/Feature/home/presention/mangement/catigory/catigory_cubit.dart';
 import 'package:e_commerce_clean_arcitecture/Feature/home/presention/mangement/product/ListProducts/product_list_cubit.dart';
 import 'package:e_commerce_clean_arcitecture/core/utiles/observer.dart';
 import 'package:e_commerce_clean_arcitecture/homeBody.dart';
@@ -37,7 +38,9 @@ class MyApp extends StatelessWidget {
             providers: [
               BlocProvider(create: (context){
                  return ProductListCubit()..getProductList();
-              })
+              }),BlocProvider(create: (context){
+                 return CatigoryCubit()..getCatigoryList();
+              }),
             ],
             child: MaterialApp(
               debugShowCheckedModeBanner: false,

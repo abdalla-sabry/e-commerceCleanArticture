@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../widget/CardItemsCustom.dart';
+import '../../../../../../widget/CardItemsCustom.dart';
+
 
 
 class Carditems extends StatelessWidget {

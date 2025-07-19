@@ -20,7 +20,6 @@ class ContainerPriseandColor extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 15.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
@@ -34,19 +33,25 @@ class ContainerPriseandColor extends StatelessWidget {
           children: [
             SizedBox(height: .5.h),
 
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w500,
+            Padding(
+              padding: const EdgeInsets.all(2),
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
             SizedBox(height: .5.h),
-            Text(
-              '\$${price.toStringAsFixed(2)}',
-              style: TextStyle(
-                fontSize: 15.sp,
-                color: Colors.black87,
+            Padding(
+              padding: const EdgeInsets.only(right: 4,left: 4,bottom: 3),
+              child: Text(
+                '\$${price.toStringAsFixed(2)}',
+                style: TextStyle(
+                  fontSize: 15.sp,
+                  color: Colors.black87,
+                ),
               ),
             ),
           ],

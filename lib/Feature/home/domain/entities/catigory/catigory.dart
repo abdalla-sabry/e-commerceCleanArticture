@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 
-class Category  extends Equatable{
+class CategoryEntites  extends Equatable{
   final String id;
   final String name;
   final String image;
 
-  Category({
+  CategoryEntites({
     required this.id,
     required this.name,
     required this.image,

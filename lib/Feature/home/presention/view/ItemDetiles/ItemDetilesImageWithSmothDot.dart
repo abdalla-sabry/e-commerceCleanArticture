@@ -30,7 +30,7 @@ class _ItemdetilesimagewithsmothdotState
           child: CarouselSlider.builder(
             itemCount: product.images.length,
             itemBuilder: (context, index, realIdx) {
-              final image = product.images[index];
+              String image = product.images[index];
 
               return Hero(
                 tag: 'product-${product.id}',
@@ -76,9 +76,12 @@ class _ItemdetilesimagewithsmothdotState
             dotColor: Colors.grey.shade300,
           ),
           onDotClicked: (index) {
-            setState(() {
-              currentIndex = index;
-            });
+
+              setState(() {
+                currentIndex = index;
+
+              });
+
           },
         ),
       ],

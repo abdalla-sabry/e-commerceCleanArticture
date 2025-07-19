@@ -1,12 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_commerce_clean_arcitecture/Feature/home/domain/entities/catigory/catigory.dart';
 import 'package:e_commerce_clean_arcitecture/core/utiles/fontStyle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 class Categorycard extends StatelessWidget {
-  const Categorycard({super.key});
-
+   Categorycard({super.key,required this.categoryEntites});
+CategoryEntites categoryEntites;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -33,7 +34,7 @@ class Categorycard extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: CachedNetworkImage(
-                  imageUrl: 'https://res.cloudinary.com/programming-night/image/upload/v1734204353/E-Shop/Category/mouse_u2bcoq.jpg',
+                  imageUrl:categoryEntites.image,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -50,7 +51,7 @@ class Categorycard extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
                     child: Text(
-                      'Mouse',
+                      categoryEntites.name,
                       style: TextStyle(
                         fontSize: 18
                       ),
