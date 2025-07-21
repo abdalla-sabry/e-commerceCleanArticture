@@ -6,8 +6,8 @@ import 'authWidget/ButtomForAuthSetting.dart';
 import 'authWidget/authUserProfileDetiles/ListButtomSettings.dart';
 import 'authWidget/authUserProfileDetiles/authUserprofileDetiles.dart';
 
-class Authenticationview extends StatelessWidget {
-  const Authenticationview({super.key});
+class settingVeiw extends StatelessWidget {
+  const settingVeiw({super.key});
 
   @override
   Widget build(BuildContext context) {

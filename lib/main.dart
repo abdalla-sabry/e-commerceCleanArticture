@@ -3,33 +3,42 @@ import 'package:e_commerce_clean_arcitecture/Feature/home/presention/mangement/c
 import 'package:e_commerce_clean_arcitecture/Feature/home/presention/mangement/product/ListProducts/product_list_cubit.dart';
 import 'package:e_commerce_clean_arcitecture/core/utiles/observer.dart';
 import 'package:e_commerce_clean_arcitecture/homeBody.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 
+import 'Feature/authantication/presention/view/authentication/signUp/signUpVeiwBlocProvider.dart';
+import 'Feature/authantication/presention/view/authentication/signUp/signupVeiw.dart';
+import 'Feature/authantication/presention/view/authentication/singIn/SingInVeiwBlocProvider.dart';
+import 'Feature/authantication/presention/view/authentication/singIn/signInView.dart';
 import 'Feature/home/presention/view/ItemDetiles/ItemDetilesView.dart';
 import 'core/utiles/Getit.dart';
 import 'core/utiles/theme.dart';
 import 'firebase_options.dart';
 
 void main() async {
-  getITFuncationForproductConstractor();
-  WidgetsFlutterBinding.ensureInitialized();
-  Bloc.observer=Obseriver();
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  final user =FirebaseAuth.instance.currentUser;
 
-  runApp(MyApp());
+  Bloc.observer=Obseriver();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+  getITFuncationForproductConstractor();
+
+
+  runApp(MyApp(user: user,));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  User?user;
 
+  MyApp({super.key,required this.user });
   @override
   Widget build(BuildContext context) {
     return Sizer(
@@ -44,9 +53,13 @@ class MyApp extends StatelessWidget {
             ],
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
-              home: Homebody(),
+              home:user!=null? Homebody():Singinveiwblocprovider(),
               theme: AppTheme.lightTheme,
               routes: {
+                SignUpView.routeName: (context) => SignUpView(),
+                Singinveiwblocprovider.routeName: (context) => Singinveiwblocprovider(),
+                SignupVeiwBlocProvider.routeName: (context) => SignupVeiwBlocProvider(),
+                Homebody.routeName: (context) => Homebody(),
               },
             ),
           );

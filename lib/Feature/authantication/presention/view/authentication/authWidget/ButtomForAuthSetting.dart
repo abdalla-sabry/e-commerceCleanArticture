@@ -5,14 +5,14 @@ import 'package:sizer/sizer.dart';
 class ButtomforAuthSetting extends StatelessWidget {
   ButtomforAuthSetting({super.key, required this.buttomName,required this.onTapFunction, this.isVisable});
   final String buttomName;
-   void Function() onTapFunction;
+   void Function(BuildContext buildContext) onTapFunction;
    bool? isVisable;
   @override
   Widget build(BuildContext context) {
     return Visibility(
       visible: isVisable??true,
       child: GestureDetector(
-        onTap:onTapFunction ,
+        onTap:() => onTapFunction(context) ,
         child: Stack(
            children: [
              Container(

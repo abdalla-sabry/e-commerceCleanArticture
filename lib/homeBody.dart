@@ -1,10 +1,11 @@
 import 'dart:ffi';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-import 'Feature/authantication/presention/view/authentication/authenticationView.dart';
+import 'Feature/authantication/presention/view/authentication/SettingVeiw.dart';
 import 'Feature/home/presention/view/card/cardView.dart';
 import 'Feature/home/presention/view/category/categoryView.dart';
 import 'Feature/home/presention/view/homeView/homeVeiw.dart';
@@ -12,6 +13,7 @@ import 'Feature/home/presention/view/homeView/homeWidget/BottomNavigationBar/bot
 
 class Homebody extends StatefulWidget {
    Homebody({super.key});
+   static const routeName='Homebody';
 
   @override
   State<Homebody> createState() => _HomebodyState();
@@ -33,6 +35,8 @@ Void? onChange(int index){
 }
   @override
   Widget build(BuildContext context) {
+    final user = ModalRoute.of(context)!.settings.arguments as User;
+
     return Scaffold(
       body: Stack(
         children: [
@@ -40,10 +44,10 @@ Void? onChange(int index){
             controller: controller,
             onPageChanged: onChange,
             children: [
-              Homeveiw(),
+              Homeveiw(user: user,),
               Categoryview(),
-              Cardview(),
-              Authenticationview()
+              Cardview(user: user,),
+              settingVeiw()
             ],
           ),
           Positioned(

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -8,9 +9,9 @@ import 'homeWidget/SearchBarSection/searchBarSection.dart';
 import 'homeWidget/TopBarSection/TopBarSectionWidget.dart';
 
 class Homeveiw extends StatelessWidget {
-  const Homeveiw({super.key});
-
+   Homeveiw({super.key,this .user});
   @override
+  User? user;
   Widget build(BuildContext context) {
     return         CustomScrollView(
       slivers: [

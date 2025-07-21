@@ -1,5 +1,6 @@
 import 'package:e_commerce_clean_arcitecture/Feature/home/presention/view/card/CardItem.dart';
 import 'package:e_commerce_clean_arcitecture/core/utiles/fontStyle.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -7,8 +8,8 @@ import 'package:sizer/sizer.dart';
 import 'CardWidget/CheckOutWidget/CheckOutWidget.dart';
 
 class Cardview extends StatelessWidget {
-  const Cardview({super.key});
-
+  Cardview({super.key,this.user});
+User? user;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
