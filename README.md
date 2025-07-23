@@ -5,8 +5,8 @@ Flutter TDD Clean Architecture E-Commerce App - E_commerce
 This repository presents a comprehensive E-Commerce mobile application developed using Flutter 3, following the principles of Clean Architecture, Test-Driven Development (TDD), and the BLoC (Business Logic Component) state management pattern.
 
 The project serves as a practical demonstration of modern mobile app development best practices, aimed at building applications that are scalable, maintainable, and efficient. By combining architectural discipline with Flutter’s UI capabilities, this app highlights how professional-grade mobile solutions can be built using clean, testable, and modular code.
-![App Preview](assets/cover/cover.png)
-## Getting Started
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
+## Key Features:
 
 Test-Driven Development (TDD):
 This project emphasizes writing tests before implementing features. It ensures the app's business logic is robust, maintainable, and less prone to regression.
