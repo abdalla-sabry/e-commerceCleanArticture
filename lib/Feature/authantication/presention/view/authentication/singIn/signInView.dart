@@ -1,10 +1,10 @@
 import 'package:e_commerce_clean_arcitecture/Feature/authantication/presention/mangment/signIn/sign_in_cubit.dart';
-import 'package:e_commerce_clean_arcitecture/Feature/authantication/presention/mangment/signIn/sign_in_cubit.dart';
-import 'package:e_commerce_clean_arcitecture/Feature/authantication/presention/view/authentication/signUp/signupVeiw.dart';
-import 'package:e_commerce_clean_arcitecture/homeBody.dart';
+import 'package:e_commerce_clean_arcitecture/Feature/home/presention/view/homeBody.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
+import '../../../mangment/getUserData/get_user_data_cubit.dart';
 
 import '../../../../../../core/utiles/constant/imagesConstante.dart';
 import '../../../../../../core/utiles/validate.dart';
@@ -35,8 +35,12 @@ class _SignInViewState extends State<SignInView> {
               context: context,
               message: state.message,
             );
+            final userEmail = FirebaseAuth.instance.currentUser!.email;
+
+            BlocProvider.of<GetUserDataCubit>(context).getUserDataFireBase(email: userEmail!);
             Future.delayed(Duration(milliseconds: 300), () {
-              Navigator.pushNamed(context, Homebody.routeName,arguments: state.user);
+              Navigator.pushNamed(context, Homebody.routeName,
+                  arguments: state.user.email);
             });
           } else if (state is SignInFailure) {
             SnackBarText.show(
@@ -124,7 +128,9 @@ class _SignInViewState extends State<SignInView> {
                       InputFormButton(
                         color: Colors.black87,
                         onClick: () {
-                          BlocProvider.of<SignInCubit>(context).signIn(email: emailController.text, password: passwordController.text);
+                          BlocProvider.of<SignInCubit>(context).signIn(
+                              email: emailController.text,
+                              password: passwordController.text);
                         },
                         titleText: 'Sign In',
                       ),

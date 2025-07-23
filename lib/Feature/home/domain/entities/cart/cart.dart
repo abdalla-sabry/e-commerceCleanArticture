@@ -16,3 +16,20 @@ class ProductItem extends Equatable {
   @override
   List<Object?> get props => [id, product, priceTag];
 }
+
+class ProductCard extends Equatable {
+  final String name;
+  final String type;
+  final double price;
+  final String imageUrl;
+
+  const ProductCard({
+    required this.name,
+    required this.type,
+    required this.price,
+    required this.imageUrl,
+  });
+
+  @override
+  List<Object?> get props => [name, type, price, imageUrl];
+}

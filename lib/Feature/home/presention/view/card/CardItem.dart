@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../../widget/CardItemsCustom.dart';
+
 
 class Carditem extends StatelessWidget {
   Carditem({super.key});
@@ -12,7 +14,7 @@ class Carditem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // Carditemscustom(hight: 20.h, width: 27.w),
+        Carditemscustom(hight: 20.h, width: 27.w,imageUrl: 'https://res.cloudinary.com/programming-night/image/upload/v1734179544/E-Shop/Porducts/Razer%20Viper%20V3%20Pro/img-1_i1uvec.jpg',),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,

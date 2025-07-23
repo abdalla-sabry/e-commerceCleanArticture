@@ -9,9 +9,9 @@ import 'homeWidget/SearchBarSection/searchBarSection.dart';
 import 'homeWidget/TopBarSection/TopBarSectionWidget.dart';
 
 class Homeveiw extends StatelessWidget {
-   Homeveiw({super.key,this .user});
+   Homeveiw({super.key,});
   @override
-  User? user;
+
   Widget build(BuildContext context) {
     return         CustomScrollView(
       slivers: [

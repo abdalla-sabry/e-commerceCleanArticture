@@ -2,11 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:e_commerce_clean_arcitecture/Feature/home/data/Models/product/productModel.dart';
 import 'package:e_commerce_clean_arcitecture/Feature/home/domain/entities/product/productEntites.dart';
-import 'package:e_commerce_clean_arcitecture/core/failer/Failer.dart';
+import 'package:e_commerce_clean_arcitecture/core/failure/Failer.dart';
 import 'package:e_commerce_clean_arcitecture/core/utiles/ApiSerice.dart';
 
 abstract class ProductRemoteDataSource {
-  Future<Either<Failer, List<ProductEntites>>> getProductes();
+  Future<Either<Failure, List<ProductEntites>>> getProductes();
 }
 
 class ProductRemoteDataSourceImpl extends ProductRemoteDataSource {
@@ -15,7 +15,7 @@ class ProductRemoteDataSourceImpl extends ProductRemoteDataSource {
   ProductRemoteDataSourceImpl({required this.api_service});
 
   @override
-  Future<Either<Failer, List<ProductEntites>>> getProductes() async {
+  Future<Either<Failure, List<ProductEntites>>> getProductes() async {
     try {
       final response = await api_service.getResponse(endPoint: 'products');
 

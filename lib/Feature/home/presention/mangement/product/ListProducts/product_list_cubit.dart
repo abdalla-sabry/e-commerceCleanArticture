@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:e_commerce_clean_arcitecture/Feature/home/domain/entities/product/productEntites.dart';
 import 'package:e_commerce_clean_arcitecture/Feature/home/domain/use%20cases/prodect/FeatchListprodectUseCases.dart';
-import 'package:e_commerce_clean_arcitecture/core/failer/Failer.dart';
 import 'package:meta/meta.dart';
 
 import '../../../../../../core/utiles/Getit.dart';

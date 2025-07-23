@@ -8,8 +8,8 @@ import 'package:sizer/sizer.dart';
 import 'CardWidget/CheckOutWidget/CheckOutWidget.dart';
 
 class Cardview extends StatelessWidget {
-  Cardview({super.key,this.user});
-User? user;
+  Cardview({super.key,});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

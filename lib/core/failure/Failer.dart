@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Failer {
+class Failure {
   String ? error;
-  Failer(this.error);
+  Failure(this.error);
 }
-class ApiFailure extends Failer {
+class ApiFailure extends Failure {
   ApiFailure(super.error);
 
   factory ApiFailure.fromTypeError(DioException dioException) {
@@ -68,5 +70,53 @@ class ApiFailure extends Failer {
     } else {
       return ApiFailure("Server error [$statusCode]: 'Unknown error'}");
     }
+  }
+}
+
+
+class FirebaseFailure extends Failure {
+  FirebaseFailure(super.error);
+
+  /// Handles Firebase Auth Exceptions
+  factory FirebaseFailure.fromAuthException(FirebaseAuthException e) {
+    switch (e.code) {
+      case 'invalid-email':
+        return FirebaseFailure("The email address is not valid.");
+      case 'user-disabled':
+        return FirebaseFailure("This user has been disabled.");
+      case 'user-not-found':
+        return FirebaseFailure("No user found with this email.");
+      case 'wrong-password':
+        return FirebaseFailure("Incorrect password.");
+      case 'email-already-in-use':
+        return FirebaseFailure("This email is already in use.");
+      case 'operation-not-allowed':
+        return FirebaseFailure("This operation is not allowed.");
+      case 'weak-password':
+        return FirebaseFailure("The password is too weak.");
+      default:
+        return FirebaseFailure("Auth error: ${e.message}");
+    }
+  }
+
+  /// Handles generic Firebase/Firestore exceptions
+  factory FirebaseFailure.fromFirebaseException(FirebaseException e) {
+    switch (e.code) {
+      case 'permission-denied':
+        return FirebaseFailure("You don’t have permission to perform this action.");
+      case 'unavailable':
+        return FirebaseFailure("The service is temporarily unavailable.");
+      case 'not-found':
+        return FirebaseFailure("Requested document not found.");
+      case 'deadline-exceeded':
+        return FirebaseFailure("Request took too long. Try again.");
+      default:
+        return FirebaseFailure("Firebase error: ${e.message}");
+    }
+  }
+
+  /// Handles any unknown error
+  factory FirebaseFailure.fromUnknown(dynamic e) {
+    return FirebaseFailure("Unknown Firebase error: $e");
   }
 }

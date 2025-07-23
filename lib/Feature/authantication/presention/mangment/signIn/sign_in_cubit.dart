@@ -18,6 +18,7 @@ class SignInCubit extends Cubit<SignInState> {
         password: password,
       );
       emit(SignInSuccess(message: 'Signed in successfully.',user: credential.user!));
+
     } on FirebaseAuthException catch (e) {
       String errorMsg;
       if (e.code == 'user-not-found') {
