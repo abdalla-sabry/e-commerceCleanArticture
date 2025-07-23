@@ -7,10 +7,16 @@ import '../../Feature/authantication/data/dataSource/remote/User_FireBase_Remote
 import '../../Feature/authantication/domain/Responce/getUserDataRepo.dart';
 import '../../Feature/authantication/domain/useCase/getuserDataUseCase.dart';
 import '../../Feature/home/data/DataSource/Remote/Catigory_Romote_Data_Soure.dart';
+import '../../Feature/home/data/DataSource/Remote/cart_Romote_Data_Soure.dart';
+import '../../Feature/home/domain/Repo/card/CardRepo.dart';
 import '../../Feature/home/domain/Repo/catigory/catigoryRepo.dart';
 import '../../Feature/home/domain/Repo/product/ProductViewRepo.dart';
+import '../../Feature/home/domain/use cases/cart/FeatchCartUsecase.dart';
 import '../../Feature/home/domain/use cases/catigory/FeatchCatigoryUseCase.dart';
 import '../../Feature/home/domain/use cases/prodect/FeatchListprodectUseCases.dart';
+import '../../Feature/home/presention/mangement/CardItem/GetCardItems/get_card_items_cubit.dart';
+import '../../Feature/home/presention/mangement/CardItem/RemoveCardItems/remove_card_items_cubit.dart';
+import '../../Feature/home/presention/mangement/CardItem/addCardItems/add_card_items_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -58,4 +64,18 @@ void getITFuncationForproductConstractor() {
   getIt.registerSingleton<GetuserdataUseCase>(
     GetuserdataUseCase(getIt.get<UserDataRepositoryImpl>()),
   );
+  //GetCardItemsCubit Constractor
+  getIt.registerSingleton<CardRemoteDataSourceImpl>(
+      CardRemoteDataSourceImpl());
+  getIt.registerSingleton<CartRepositoryImpl>(
+    CartRepositoryImpl(remote:getIt.get<CardRemoteDataSourceImpl>() ));
+  getIt.registerSingleton<CartUseCaseImpl>(
+      CartUseCaseImpl(repository: getIt.get<CartRepositoryImpl>() ));
+  getIt.registerSingleton<AddCardItemsCubit>(
+      AddCardItemsCubit(addProductResponseUseCase:  getIt.get<CartUseCaseImpl>() ));
+      getIt.registerSingleton<GetCardItemsCubit>(
+          GetCardItemsCubit(getProductResponseUseCase:  getIt.get<CartUseCaseImpl>() ));
+      getIt.registerSingleton<RemoveCardItemsCubit>(
+          RemoveCardItemsCubit(removeProductResponseUseCase: getIt.get<CartUseCaseImpl>() ));
+
 }

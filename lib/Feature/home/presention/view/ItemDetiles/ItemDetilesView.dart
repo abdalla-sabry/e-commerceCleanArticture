@@ -72,7 +72,7 @@ class _ItemdetilesviewState extends State<Itemdetilesview> {
             ],
           ),
         ),
-        bottomNavigationBar: Itemdetilesbottomnavigationbar(),
+        bottomNavigationBar: Itemdetilesbottomnavigationbar( productEntites: widget.product,),
       ),
     );
   }
