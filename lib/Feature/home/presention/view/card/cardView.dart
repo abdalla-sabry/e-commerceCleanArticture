@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 import 'CardWidget/CheckOutWidget/CheckOutWidget.dart';
+import 'ListViewCarditem.dart';
 
 class Cardview extends StatelessWidget {
   Cardview({super.key,});
@@ -18,7 +19,7 @@ class Cardview extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-        Carditem(),
+            Listviewcarditem(),
             Checkoutwidget()
           ],
         ),

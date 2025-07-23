@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:sizer/sizer.dart';
 
 class AuthNameandEmailaddress extends StatelessWidget {
-   AuthNameandEmailaddress({ this.userName='Omar Sabry',  this.emailAddress='omar.sabry@gmail.com'});
+   AuthNameandEmailaddress({ this.userName='abdallah sabry',  this.emailAddress='abdalla.sabry@gmail.com'});
 final String userName;
 final String emailAddress;
   @override

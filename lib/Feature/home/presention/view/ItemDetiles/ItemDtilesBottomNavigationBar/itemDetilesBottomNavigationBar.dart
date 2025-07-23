@@ -10,6 +10,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
 import '../../../../../widget/InputFormButton.dart';
+import '../../../mangement/CardItem/GetCardItems/get_card_items_cubit.dart';
+import '../../../mangement/CardItem/totilePrice/totile_prices_cubit.dart';
 
 class Itemdetilesbottomnavigationbar extends StatelessWidget {
   Itemdetilesbottomnavigationbar({super.key, required this.productEntites});
@@ -33,7 +35,8 @@ class Itemdetilesbottomnavigationbar extends StatelessWidget {
           listener: (context, state) {
             if (state is AddCardItemsSuccess) {
               context.loaderOverlay.hide();
-
+              final uid=FirebaseAuth.instance.currentUser!.uid;
+BlocProvider.of<GetCardItemsCubit>(context). fetchCardProducts(uid: uid);
               SnackBarText.show(context: context, message: state.massage);
             } else if (state is AddCardItemsFailure) {
               SnackBarText.show(context: context, message: state.error!);
@@ -86,8 +89,9 @@ class Itemdetilesbottomnavigationbar extends StatelessWidget {
                                     name: productEntites.name,
                                     type: productEntites.categories[0].name,
                                     price: productEntites.priceTags[0].price,
-                                    imageUrl: productEntites.images[0]),
+                                    imageUrl: productEntites.images[0],id: productEntites.id),
                                 uid: uid);
+                        BlocProvider.of<TotilePricesCubit>(context). addToTotalPrice(uid,  productEntites.priceTags[0].price) ;
                         Navigator.pop(context);
                       },
                       titleText: "Add to Cart",

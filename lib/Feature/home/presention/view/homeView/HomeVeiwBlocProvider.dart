@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../mangement/CardItem/GetCardItems/get_card_items_cubit.dart';
 import 'homeVeiw.dart';
 
 class Homeveiwblocprovider extends StatefulWidget {
@@ -21,6 +22,8 @@ class _HomeveiwblocproviderState extends State<Homeveiwblocprovider> {
     final userEmail = FirebaseAuth.instance.currentUser!.email;
 
     BlocProvider.of<GetUserDataCubit>(context).getUserDataFireBase(email: userEmail!);    super.initState();
+    final uid=FirebaseAuth.instance.currentUser!.uid;
+    BlocProvider.of<GetCardItemsCubit>(context). fetchCardProducts(uid: uid);
   }
   @override
   Widget build(BuildContext context) {

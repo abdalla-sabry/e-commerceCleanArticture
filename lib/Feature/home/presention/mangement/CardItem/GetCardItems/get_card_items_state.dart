@@ -4,7 +4,9 @@ part of 'get_card_items_cubit.dart';
 abstract class GetCardItemsState {}
 
  class GetCardItemsInitial extends GetCardItemsState {}
- class GetCardItemsLoading extends GetCardItemsState {}
+ class GetCardItemsLoading extends GetCardItemsState {
+
+ }
  class GetCardItemsSuccess extends GetCardItemsState {
   List<ProductCardModel> productCardList;
   GetCardItemsSuccess({required

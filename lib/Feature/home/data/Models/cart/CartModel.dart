@@ -3,8 +3,8 @@ class ProductCardModel {
   final String type;
   final double price;
   final String imageUrl;
-
-  ProductCardModel({
+final String id;
+  ProductCardModel({required this.id,
     required this.name,
     required this.type,
     required this.price,
@@ -17,6 +17,7 @@ class ProductCardModel {
       'type': type,
       'price': price,
       'image': imageUrl,
+      'id':id
     };
   }
 
@@ -26,6 +27,7 @@ class ProductCardModel {
       type: map['type'],
       price: (map['price'] as num).toDouble(),
       imageUrl: map['image'],
+      id: map['id'],
     );
   }
 }

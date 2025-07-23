@@ -13,12 +13,13 @@ class SignInCubit extends Cubit<SignInState> {
   }) async {
     emit(SignInLoading());
     try {
-   UserCredential credential=   await FirebaseAuth.instance.signInWithEmailAndPassword(
+      UserCredential credential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-      emit(SignInSuccess(message: 'Signed in successfully.',user: credential.user!));
-
+      emit(SignInSuccess(
+          message: 'Signed in successfully.', user: credential.user!));
     } on FirebaseAuthException catch (e) {
       String errorMsg;
       if (e.code == 'user-not-found') {

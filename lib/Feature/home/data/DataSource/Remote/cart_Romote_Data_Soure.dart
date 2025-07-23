@@ -49,14 +49,21 @@ class CardRemoteDataSourceImpl extends CardRomoteDataSource {
     required String uid,
   }) async {
     try {
-      await _firestore
+      final querySnapshot = await FirebaseFirestore.instance
           .collection('users')
           .doc(uid)
           .collection('products')
-          .doc(productIndex)
-          .delete();
+          .where('id', isEqualTo: productIndex)
+          .get();
 
-      return const Right(0);
+      if (querySnapshot.docs.isEmpty) {
+        return Left(FirebaseFailure('No product found with id: $productIndex'));
+      }
+
+      // Assuming 'id' is unique, delete the first match
+      await querySnapshot.docs.first.reference.delete();
+
+      return const Right(null);
     } on FirebaseException catch (e) {
       return Left(FirebaseFailure.fromFirebaseException(e));
     } catch (e) {

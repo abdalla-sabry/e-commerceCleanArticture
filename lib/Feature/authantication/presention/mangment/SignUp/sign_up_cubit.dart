@@ -27,6 +27,8 @@ class SignUpCubit extends Cubit<SignUpState> {
         'last_name': lastName,
         'email': emailAddress,
         'created_at': FieldValue.serverTimestamp(),
+        'total_Price':0.0,
+        'total_items':0
       });
 
       emit(SignUpSuccess(massage: "User data saved to Firestore." ));

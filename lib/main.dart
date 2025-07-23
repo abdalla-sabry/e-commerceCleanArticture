@@ -12,6 +12,7 @@ import 'package:sizer/sizer.dart';
 import 'Feature/authantication/presention/mangment/getUserData/get_user_data_cubit.dart';
 import 'Feature/authantication/presention/view/authentication/singIn/SingInVeiwBlocProvider.dart';
 import 'Feature/home/presention/mangement/CardItem/GetCardItems/get_card_items_cubit.dart';
+import 'Feature/home/presention/mangement/CardItem/totilePrice/totile_prices_cubit.dart';
 import 'Feature/home/presention/mangement/catigory/catigory_cubit.dart';
 import 'Feature/home/presention/mangement/product/ListProducts/product_list_cubit.dart';
 import 'core/utiles/BlocProviderList.dart';
@@ -64,6 +65,9 @@ class MyApp extends StatelessWidget {
           }),
           BlocProvider(create: (context) {
             return CatigoryCubit()..getCatigoryList();
+          }),
+          BlocProvider(create: (context) {
+            return TotilePricesCubit();
           }),
         ],
         child: MaterialApp(
