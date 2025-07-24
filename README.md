@@ -4,6 +4,7 @@
 [linkedin-shield]: https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin
 [linkedin-url]: https://www.linkedin.com/in/abdullah-sabry/
 Flutter TDD Clean Architecture E-Commerce App - E_commerce
+<tr>
 📦 Welcome to the Flutter TDD Clean Architecture E-Commerce App
 This repository presents a comprehensive E-Commerce mobile application developed using Flutter 3, following the principles of Clean Architecture, Test-Driven Development (TDD), and the BLoC (Business Logic Component) state management pattern.
 
