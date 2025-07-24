@@ -56,3 +56,9 @@ The project serves as a practical demonstration of modern mobile app development
     </table>
 </div>
 
+## 📱 About
+
+A modern E-Commerce mobile application built with **Flutter**, **Test-Driven Development (TDD)**, **Clean Architecture**, and **BLoC**.
+
+### 🚀 Topics
+`tdd` `clean-code` `clean-architecture` `test-driven-development` `flutter` `flutter-examples` `flutter-ui` `flutter-app` `flutter-e-commerce`
