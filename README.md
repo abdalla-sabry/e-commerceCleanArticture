@@ -47,8 +47,6 @@ The project serves as a practical demonstration of modern mobile app development
         </tr>
         <tr>
             <td style="text-align: center">
-            </td>
-            <td style="text-align: center">
                 <img src="https://res.cloudinary.com/dhyttttax/image/upload/v1695746530/RepoAssets/user-auth-screens_k3h6fw.gif" width="200"/>
             </td>
             <td style="text-align: center">
@@ -57,3 +55,4 @@ The project serves as a practical demonstration of modern mobile app development
         </tr>
     </table>
 </div>
+
